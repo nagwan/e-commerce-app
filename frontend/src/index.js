@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./assets/sass/main.sass"
+import "@fortawesome/fontawesome-free";
+import "@fortawesome/fontawesome-free/css/all.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
