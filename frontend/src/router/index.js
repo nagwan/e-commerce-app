@@ -18,7 +18,7 @@ function PrivateRoutes({ route }) {
     )
 }
 
-function AuthRoutes({route}) {
+function AuthRoutes({ route }) {
 
     return (
         /**
@@ -27,6 +27,9 @@ function AuthRoutes({route}) {
          */
 
         <Route path={route.path} exact={route.exact} component={route.component} />
+        ||
+        <Redirect push to='/me' />
+
     )
 
 }
@@ -38,7 +41,7 @@ function ManiRouter() {
 
         <MainLayout>
             <BrowserRouter>
-                <div className='container p-30 min-h-100vh'>
+                <div className='w-100 p-30 min-h-100vh'>
                     <Switch>
                         {
                             Routes.map((route, index) => (
