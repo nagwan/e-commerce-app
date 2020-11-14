@@ -1,0 +1,50 @@
+@import "./grid"
+@import "./colors"
+@import "./fonts"
+@import "./utils"
+
+body, html
+    font-family: primary-regular !important
+.container-fluid
+    padding-left:  0 !important
+    padding-right: 0 !important
+.row
+    margin-right: 0 !important
+    margin-left: 0 !important
+.ar
+    direction: rtl !important
+    text-align: right !important
+.en
+    direction: ltr !important
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+  margin: 0
+
+
+/* Firefox */
+input[type=number] 
+  -moz-appearance: textfield
+
+button
+    font-family: primary-regular !important
+button:focus,
+button:active,
+button:active:focus
+    outline: none !important
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+    -webkit-box-shadow: 0 0 0 30px white inset !important
+    border-radius: 10px
+    overflow: hidden !important
+input:-internal-autofill-selected
+    background-color: none !important
+    border-radius: 10px
+    overflow: hidden !important
+
+button:disabled
+    opacity: .5 !important
+    cursor: no-drop !important
