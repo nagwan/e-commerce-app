@@ -12,6 +12,7 @@ export default function Product({ match }) {
                     <Link className="btn btn-link no-decoration txt-color-main-500" to="/">GO Back</Link>
                 </div>
             </div>
+
             <div className="d-flex flex-wrap">
                 <div className="col-12 col-md-6">
                     <img alt={product.name} src={product.image} width="100%" />
@@ -48,7 +49,6 @@ export default function Product({ match }) {
                                     <span> OUT of stock </span>
                                 </>
                         }
-
                     </div>
 
                     <button disabled={product.countInStock === 0} className="btn btn-main p-15 radius-4 w-100 fs-16">
@@ -56,10 +56,6 @@ export default function Product({ match }) {
                         <span className="m-x-10">Add to cart</span>
                     </button>
                 </div>
-            </div>
-
-            <div className="d-flex flex-wrap">
-
             </div>
         </>
     )
