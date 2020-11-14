@@ -594,6 +594,8 @@
 /* text decoration */
 .txt-underline
     text-decoration: underline
+.no-underline
+    text-decoration: none !important
 
 /* font color classes*/
 .txt-color-white
@@ -659,26 +661,26 @@
 .txt-color-danger-900
     color: $danger-900 !important
 
-.txt-color-neutral-50
-    color: $neutral-50 !important
-.txt-color-neutral-100
-    color: $neutral-100 !important
-.txt-color-neutral-200
-    color: $neutral-200 !important
-.txt-color-neutral-300
-    color: $neutral-300 !important
-.txt-color-neutral-400
-    color: $neutral-400 !important
-.txt-color-neutral-500
-    color: $neutral-500 !important
-.txt-color-neutral-600
-    color: $neutral-600 !important
-.txt-color-neutral-700
-    color: $neutral-700 !important
-.txt-color-neutral-800
-    color: $neutral-800 !important
-.txt-color-neutral-900
-    color: $neutral-900 !important
+.txt-color-main-50
+    color: $main-50 !important
+.txt-color-main-100
+    color: $main-100 !important
+.txt-color-main-200
+    color: $main-200 !important
+.txt-color-main-300
+    color: $main-300 !important
+.txt-color-main-400
+    color: $main-400 !important
+.txt-color-main-500
+    color: $main-500 !important
+.txt-color-main-600
+    color: $main-600 !important
+.txt-color-main-700
+    color: $main-700 !important
+.txt-color-main-800
+    color: $main-800 !important
+.txt-color-main-900
+    color: $main-900 !important
 
 .txt-color-accent-50
     color: $accent-50 !important
@@ -726,9 +728,9 @@
 .font-primary-light
     font-family: primary-light
 .font-primary-bold
-    font-family: primary-bold 
+    font-family: primary-bold
 .font-primary-extra-bold
-    font-family: primary-extra-bold 
+    font-family: primary-extra-bold
 .font-primary-regular
     font-family: primary-regular
 .font-secondary-light
@@ -745,6 +747,23 @@
     font-family: secondary-regular
 
 /* btn classes*/
+.btn
+    background: none !important
+    border: none !important
+    outline: none !important
+    cursor: pointer !important
+.btn-main
+    background: $main-800 !important
+    color: #ffffff !important
+.btn-main-outline
+    color: $main-800 !important
+    border: 1px solid $main-800 !important
+    &:hover
+        @extend .btn-main
+.btn-main-inactive
+    color: $main-500 !important
+    background: $main-100 !important
+
 .btn-primary
     background: $primary-500 !important
     color: #ffffff !important
@@ -754,7 +773,7 @@
 .btn-primary-inactive
     color: $primary-500 !important
     background: $primary-100 !important
-    
+
 .btn-secondary
     background: $secondary-700 !important
     color: #ffffff !important
@@ -783,7 +802,6 @@
 .btn-success
     background: $success-500 !important
     color: #ffffff !important
-
 
 /* overflow classes*/
 .overflow-y-scroll
@@ -943,6 +961,25 @@
     background: $secondary-700
 .bg-secondary-800
     background: $secondary-800
+
+.bg-main-50
+    background: $main-50
+.bg-main-100
+    background: $main-100
+.bg-main-200
+    background: $main-200
+.bg-main-300
+    background: $main-300
+.bg-main-400
+    background: $main-400
+.bg-main-500
+    background: $main-500
+.bg-main-600
+    background: $main-600
+.bg-main-700
+    background: $main-700
+.bg-main-800
+    background: $main-800
 
 .bg-white
     background: #ffffff
