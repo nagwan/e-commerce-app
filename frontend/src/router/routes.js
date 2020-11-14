@@ -1,7 +1,7 @@
 import Home from "../components/pages/Home";
 import Product from "../components/pages/Product";
 
-export default [
+const Routes =  [
 
     {
         path: '/',
@@ -17,3 +17,5 @@ export default [
     },
 
 ]
+
+export default Routes
