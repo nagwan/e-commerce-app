@@ -1,0 +1,22 @@
+{
+    "name": "e-commerce-app",
+    "version": "1.0.0",
+    "description": "e-commerce application",
+    "main": "index.js",
+    "scripts": {
+        "start": "node backend/server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nagwan/e-commerce-app.git"
+    },
+    "author": "nagwan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/nagwan/e-commerce-app/issues"
+    },
+    "homepage": "https://github.com/nagwan/e-commerce-app#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
