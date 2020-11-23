@@ -1,11 +1,11 @@
-const express = require('express')
-const dotenv = require("dotenv")
+import express from 'express'
+import dotenv from 'dotenv'
 
 dotenv.config()
 
 const app = express()
 
-const products = require('./data/products')
+import  products  from './data/products.js'
 
 app.get('/api/products', (req, res) => {
     res.json(products)
