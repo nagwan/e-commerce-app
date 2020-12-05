@@ -1,10 +1,17 @@
-import React from "react"
-import products from "../../products"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Rating from "../partials/Rating/Rating"
+import Rating from "../components/partials/Rating/Rating"
+import { api } from "../utils/Api"
 
 export default function Product({ match }) {
-    const product = products.find(item => item._id === match.params.id)
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        api(`/api/products/${match.params.id}`, {}, "get").then(({ data }) => {
+            setProduct(data)
+        })
+    }, [match.params.id])
+
     return (
         <>
             <div className="d-flex m-y-15">
@@ -43,7 +50,7 @@ export default function Product({ match }) {
                     <div className="fs-16 m-y-10">
                         {
                             product.countInStock >= 0 ? <>
-                                <i class="fas fa-hourglass-half"></i>
+                                <i className="fas fa-hourglass-half"></i>
                                 <span> <span className="font-primary-bold">{product.countInStock}</span> ONLY left </span></> : <>
                                     <i className="far fa-hourglass"></i>
                                     <span> OUT of stock </span>

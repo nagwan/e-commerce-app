@@ -1,0 +1,34 @@
+{
+    "name": "e-commerce-app",
+    "version": "1.0.0",
+    "description": "e-commerce application",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node backend/server",
+        "server": "nodemon backend/server",
+        "client": "npm start --prefix frontend",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "data:import": "node backend/seeder",
+        "data:destroy": "node backend/seeder -d"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nagwan/e-commerce-app.git"
+    },
+    "author": "nagwan",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/nagwan/e-commerce-app/issues"
+    },
+    "homepage": "https://github.com/nagwan/e-commerce-app#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "concurrently": "^5.3.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-async-handler": "^1.1.4",
+        "mongoose": "^5.10.15",
+        "nodemon": "^2.0.6"
+    }
+}

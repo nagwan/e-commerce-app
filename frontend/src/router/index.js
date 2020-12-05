@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Routes from './routes';
 import MainLayout from "../components/layouts/Main"
-import NotFound from "../components/pages/404"
+import NotFound from "../pages/404"
 
 function PrivateRoutes({ route }) {
     return (
@@ -11,8 +11,8 @@ function PrivateRoutes({ route }) {
         <Redirect push to='/login' />
 
         /**
-         * check if this route requires auth, 
-         * if so check if the  user if authenticated and authorized to access this route 
+         * check if this route requires auth,
+         * if so check if the  user if authenticated and authorized to access this route
          * or redirect to login and end their session if any
          */
     )
