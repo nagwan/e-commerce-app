@@ -44,7 +44,7 @@ export const PRODUCT_DETAILS_FAIL = "PRODUCT_DETAILS_FAIL"
  /**
   * product details actions creators
   */
- export function productDetails(id) {
+ export function fetchProductDetails(id) {
 
     return async function (dispatch) {
         try {
