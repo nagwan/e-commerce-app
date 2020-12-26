@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import Swal from "sweetalert2"
 import Error from "../components/partials/Error/Error"
 import Loader from "../components/partials/loader/Loader"
-import { fetchProductDetails } from "../store/products/actions"
 import ProductDetailsData from "../components/partials/ProductDetailsData/ProductDetailsData"
 import { addItem } from "../store/cart/actions"
 import { api } from "../utils/Api"
@@ -16,17 +15,21 @@ export default function Product({ match, history }) {
     const [isLoading, setIsLoading] = useState(false)
 
 
-
     useEffect(() => {
+        fetchProduct(match.params.id)
+    }, [match.params.id, dispatch])
+
+
+    function fetchProduct(id) {
         setIsLoading(true)
-        api(`/api/products/${match.params.id}`, {}, "get").then(({ data }) => {
+        api(`/api/products/${id}`, {}, "get").then(({ data }) => {
             setProduct(data)
             setIsLoading(false)
         }).catch((err) => {
             setError(err.response?.data.message || err.message)
             setIsLoading(false)
         })
-    }, [match.params.id, dispatch])
+    }
 
     function addToCart() {
 
