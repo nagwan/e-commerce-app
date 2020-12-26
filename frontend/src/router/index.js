@@ -38,9 +38,9 @@ function AuthRoutes({ route }) {
 function ManiRouter() {
 
     return (
+        <BrowserRouter>
 
-        <MainLayout>
-            <BrowserRouter>
+            <MainLayout>
                 <div className='w-100 p-30 min-h-100vh'>
                     <Switch>
                         {
@@ -53,8 +53,9 @@ function ManiRouter() {
                         <Route component={NotFound} />
                     </Switch>
                 </div>
-            </BrowserRouter>
-        </MainLayout>
+            </MainLayout>
+        </BrowserRouter>
+
     )
 }
 export default ManiRouter
