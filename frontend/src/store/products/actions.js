@@ -18,7 +18,7 @@ export function productsList() {
         try {
             dispatch({ type: PRODUCT_LIST_REQUEST })
 
-            const products = await api("/api/products", {}, "get").then(({ data }) => {
+            const products = await api("api/products", {}, "get").then(({ data }) => {
                 return data
             })
 
