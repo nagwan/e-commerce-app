@@ -6,6 +6,7 @@ import Error from "../components/partials/Error/Error"
 import Loader from "../components/partials/loader/Loader"
 import { fetchProductDetails } from "../store/products/actions"
 import ProductDetailsData from "../components/partials/ProductDetailsData/ProductDetailsData"
+import { addItem } from "../store/cart/actions"
 
 export default function Product({ match, history }) {
     const dispatch = useDispatch()
@@ -18,6 +19,8 @@ export default function Product({ match, history }) {
 
     function addToCart() {
 
+        dispatch(addItem({ data: product }))
+
         Swal.fire({
             toast: true,
             icon: 'success',
@@ -25,7 +28,7 @@ export default function Product({ match, history }) {
             title: "The product has been added to the cart successfully",
             showConfirmButton: false,
             timer: 3000
-        }).then(()=>{
+        }).then(() => {
             history.push("/cart")
         })
     }
