@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import "./assets/sass/main.sass"
 import "@fortawesome/fontawesome-free";
 import "@fortawesome/fontawesome-free/css/all.css";
+import Swal from 'sweetalert2'
+
+//import 'sweetalert2/src/sweetalert2.scss'
 
 ReactDOM.render(
   <Provider store={store}>

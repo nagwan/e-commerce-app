@@ -1,11 +1,12 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import Swal from "sweetalert2"
 import Loader from "../components/partials/loader/Loader"
 import Rating from "../components/partials/Rating/Rating"
 import { productDetails } from "../store/products/actions"
 
-export default function Product({ match }) {
+export default function Product({ match, history }) {
     const dispatch = useDispatch()
 
     const { product, error, isLoading } = useSelector(state => state.productDetails)
@@ -13,6 +14,20 @@ export default function Product({ match }) {
     useEffect(() => {
         dispatch(productDetails(match.params.id))
     }, [match.params.id, dispatch])
+
+    function addToCart() {
+
+        Swal.fire({
+            toast: true,
+            icon: 'success',
+            position: 'bottom-end',
+            title: "The product has been added to the cart successfully",
+            showConfirmButton: false,
+            timer: 3000
+        }).then(()=>{
+            history.push("/cart")
+        })
+    }
 
     return (
         <div className="w-100">
@@ -64,7 +79,7 @@ export default function Product({ match }) {
                                         }
                                     </div>
 
-                                    <button disabled={product.countInStock === 0} className="btn btn-main p-15 radius-4 w-100 fs-16">
+                                    <button onClick={addToCart} disabled={product.countInStock === 0} className="btn btn-main p-15 radius-4 w-100 fs-16">
                                         <i className="fas fa-shopping-cart"></i>
                                         <span className="m-x-10">Add to cart</span>
                                     </button>
