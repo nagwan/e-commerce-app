@@ -1,7 +1,9 @@
 import * as actions from "./actions"
 
+let cartItems = localStorage.getItem("cartItems")
+
 const INITIAL_STATE = {
-    items: []
+    items: cartItems ? JSON.parse(cartItems) : []
 }
 
 export const cartReducer = ((state = INITIAL_STATE, action) => {
@@ -26,7 +28,8 @@ function setCartItems(allItems = [], newItem) {
             return item
         })
     } else {
-        items = [...items,{ ...newItem, qyt: 1 }]
+        items = [...items, { ...newItem, qyt: 1 }]
     }
+    localStorage.setItem("cartItems", JSON.stringify(items))
     return items
 }
