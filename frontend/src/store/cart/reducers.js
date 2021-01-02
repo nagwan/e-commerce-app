@@ -3,7 +3,7 @@ import * as actions from "./actions"
 let cartItems = localStorage.getItem("cartItems")
 
 const INITIAL_STATE = {
-    items: cartItems ? JSON.parse(cartItems) : []
+    items: cartItems ? JSON.parse(cartItems) : [],
 }
 
 export const cartReducer = ((state = INITIAL_STATE, action) => {
@@ -61,3 +61,4 @@ function removeItem(allItems, itemId) {
 
     return items
 }
+

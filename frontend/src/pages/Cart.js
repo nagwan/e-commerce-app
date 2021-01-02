@@ -8,6 +8,17 @@ const Cart = (() => {
 
   const { items } = useSelector(state => state.cart)
 
+  function getTotalCheckout() {
+    console.log("HERE")
+    let sum = 0
+
+    items.forEach(item => {
+      sum = sum + item.price * item.qyt
+    });
+
+    return sum.toFixed(3)
+  }
+
 
   return (
     <div className="w-100">
@@ -23,7 +34,7 @@ const Cart = (() => {
           </div>
 
           <div className="col-12 col-md-4">
-            <Calculator />
+            <Calculator total={getTotalCheckout()} />
           </div>
 
         </div>
