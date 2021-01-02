@@ -1,6 +1,6 @@
 import React from "react"
 
-const Calculator = (({total}) => {
+const Calculator = (({ total }) => {
   return (
     <div className="w-100">
       <div className="w-100 bg-white radius-6 shadow-2 p-15">
@@ -9,8 +9,8 @@ const Calculator = (({total}) => {
       </div>
 
       <div className="w-100 m-t-15 d-flex justify-content-center">
-        <button className="btn p-15 radius-4 btn-success">
-          Proceed to checkout
+        <button className="btn w-100 p-15 radius-4 btn-main">
+          <span className="fs-16">Proceed to checkout</span>
         </button>
       </div>
 
