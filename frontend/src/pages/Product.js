@@ -32,7 +32,7 @@ export default function Product({ match, history }) {
     }
 
     function addToCart() {
-
+        setIsLoading(true)
         dispatch(addItem({ data: product }))
 
         Swal.fire({
@@ -43,7 +43,9 @@ export default function Product({ match, history }) {
             showConfirmButton: false,
             timer: 3000
         }).then(() => {
+            setIsLoading(false)
             history.push("/cart")
+           
         })
     }
 
