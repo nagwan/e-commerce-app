@@ -1,6 +1,6 @@
 import express from "express"
 const router = express.Router()
-import {index, view} from "../controllers/products.js"
+import {index, view} from "../controllers/productsController.js"
 
 router.get('/', index)
 
