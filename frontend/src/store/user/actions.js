@@ -26,7 +26,7 @@ export function userLogin(data, routerHistory) {
                 return data
             })
 
-            document.cookie = `TOKEN=${user.token}; expires=${new Date().getDate()+30*24*60*60*1000} `
+            document.cookie = `TOKEN=${user.token}; expires=${new Date().getDate() + 30 * 24 * 60 * 60 * 1000} `
 
             dispatch({ type: USER_LOGIN_SUCCESS, payload: { data: user } })
             routerHistory.push("/")
@@ -37,6 +37,24 @@ export function userLogin(data, routerHistory) {
         }
     }
 }
+
+
+export function userLogout(routerHistory) {
+
+
+    return async function (dispatch) {
+        try {
+            dispatch({ type: USER_LOGOUT })
+            document.cookie = `TOKEN=`
+            routerHistory.push("/")
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
 
 
 /**
@@ -61,7 +79,7 @@ export function userRegister(data, routerHistory) {
                 return data
             })
 
-            document.cookie = `TOKEN=${user.token}; expires=${new Date().getDate()+30*24*60*60*1000} `
+            document.cookie = `TOKEN=${user.token}; expires=${new Date().getDate() + 30 * 24 * 60 * 60 * 1000} `
 
             dispatch({ type: USER_REGISTER_SUCCESS, payload: { data: user } })
             routerHistory.push("/")
@@ -88,7 +106,7 @@ export const USER_PROFILE_FAIL = "USER_PROFILE_FAIL"
  */
 
 export function userProfile() {
-    
+
 
     return async function (dispatch) {
 
@@ -100,7 +118,7 @@ export function userProfile() {
             const user = await api("api/users/profile", {}, "get", {}, token).then(({ data }) => {
                 return data
             })
-            
+
             dispatch({ type: USER_PROFILE_SUCCESS, payload: { data: user } })
 
         } catch (error) {
