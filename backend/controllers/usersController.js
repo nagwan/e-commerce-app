@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler"
 import User from "../models/User.js"
 
 import generateToken from "../utils/generateToken.js"
+import { isEmailValid, isStringValid } from "../utils/validateUserData.js"
 
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body
@@ -22,6 +23,50 @@ const authUser = asyncHandler(async (req, res) => {
     }
 })
 
+
+
+const registerUser = asyncHandler(async (req, res) => {
+    const { email, password, name } = req.body
+
+    const userExists = await User.findOne({ email })
+
+    if (userExists) {
+        res.status(400)
+        throw new Error("this email is already taken")
+    } else {
+
+        const emailValid = isEmailValid(email || "")
+        const passwordValid = isStringValid(password || "", 5, 15)
+        const nameValid = isStringValid(name || "", 2, 15)
+
+        if (emailValid && passwordValid && nameValid) {
+            const newUser = await User.create({
+                email,
+                password,
+                name
+            })
+
+            if (newUser) {
+                res.status(201).json({
+                    id: newUser._id,
+                    email: newUser.email,
+                    name: newUser.name,
+                    isAdmin: newUser.isAdmin,
+                    token: generateToken(newUser._id)
+                })
+            } else {
+                res.status(400)
+                throw new Error("invalid user data")
+            }
+        }else {
+            res.status(400)
+            throw new Error("invalid user data") 
+        }
+    }
+
+})
+
+
 const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id)
 
@@ -39,10 +84,13 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 })
 
+const createUser = (data) => {
 
+}
 
 
 export {
     authUser,
-    getUserProfile
+    getUserProfile,
+    registerUser
 }
