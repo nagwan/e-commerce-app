@@ -31,35 +31,3 @@ export function productsList() {
 
     }
 }
-
-
-/**
- * product details actions types
- */
-export const PRODUCT_DETAILS_REQUEST = "PRODUCT_DETAILS_REQUEST"
-export const PRODUCT_DETAILS_SUCCESS = "PRODUCT_DETAILS_SUCCESS"
-export const PRODUCT_DETAILS_FAIL = "PRODUCT_DETAILS_FAIL"
-
-
- /**
-  * product details actions creators
-  */
- export function productDetails(id) {
-
-    return async function (dispatch) {
-        try {
-            dispatch({ type: PRODUCT_DETAILS_REQUEST })
-            const product = await api(`/api/products/${id}`, {}, "get").then(({ data }) => {
-                return data
-            })
-
-            dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: { data: product } })
-
-        } catch (error) {
-            dispatch({ type: PRODUCT_DETAILS_FAIL, payload: { error: error.response?.data.message || error.message } })
-
-        }
-
-    }
-
-}

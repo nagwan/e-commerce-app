@@ -24,23 +24,3 @@ export const productList = ((state = productListInitialState, action) => {
     }
 })
 
-
-const productDetailsInitialState = {
-    ...globalState,
-    product: {},
-}
-
-
-export const productDetails = ((state = productDetailsInitialState, action) => {
-    switch (action.type) {
-        case actions.PRODUCT_DETAILS_REQUEST:
-            return { ...state, isLoading: true }
-        case actions.PRODUCT_DETAILS_SUCCESS:
-            return { ...state, isLoading: false, product: action.payload.data }
-        case actions.PRODUCT_DETAILS_FAIL:
-            return { ...state, isLoading: false, product: {}, error: action.payload.error }
-        default:
-            return state
-    }
-
-})
