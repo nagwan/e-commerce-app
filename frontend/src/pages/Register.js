@@ -82,7 +82,7 @@ export default function Register() {
         </div>
 
         <div className="w-100 m-y-10">
-          <InputField type="password" placeholder="Type your password" handleChange={handlePasswordChange} value={passwordError} />
+          <InputField type="password" placeholder="Type your password" handleChange={handlePasswordChange} value={password} error={passwordError} />
         </div>
 
         {error && <div>
@@ -96,7 +96,7 @@ export default function Register() {
         </div>
 
         <div className="w-100 d-flex justify-content-center m-y-30">
-          <button disabled={isLoading} className="col-12 col-md-4 btn p-10 radius-4 btn-success" onClick={validateData}>
+          <button disabled={isLoading} className="col-auto btn p-10 radius-4 btn-success" onClick={validateData}>
             <span>Create account</span>
           </button>
         </div>

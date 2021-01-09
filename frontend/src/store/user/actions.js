@@ -51,17 +51,20 @@ export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL"
  * user register  actions creators
  */
 
-export function userRegister() {
+export function userRegister(data, routerHistory) {
 
-    return async function (dispatch, payload) {
+    return async function (dispatch) {
         try {
             dispatch({ type: USER_REGISTER_REQUEST })
 
-            const user = await api("api/users", payload.data, "post").then(({ data }) => {
+            const user = await api("api/users", data, "post").then(({ data }) => {
                 return data
             })
 
+            document.cookie = `TOKEN=${user.token}; expires=${new Date().getDate()+30*24*60*60*1000} `
+
             dispatch({ type: USER_REGISTER_SUCCESS, payload: { data: user } })
+            routerHistory.push("/")
 
         } catch (error) {
             dispatch({ type: USER_REGISTER_FAIL, payload: { error: error.response?.data.message || error.message } })
