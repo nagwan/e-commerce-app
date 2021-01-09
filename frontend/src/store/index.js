@@ -3,10 +3,13 @@ import thunk from "redux-thunk"
 import {composeWithDevTools} from 'redux-devtools-extension'
 import {productList} from "./products/reducers"
 import {cartReducer as cart} from "./cart/reducers"
+import {userReducer as user} from "./user/reducers"
+
 
 const reducer = combineReducers({
     productList,
-    cart
+    cart,
+    user
 })
 
 const initialState = {}
