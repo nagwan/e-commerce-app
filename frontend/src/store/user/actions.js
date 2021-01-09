@@ -41,13 +41,11 @@ export function userLogin(data, routerHistory) {
 
 export function userLogout(routerHistory) {
 
-
     return async function (dispatch) {
         try {
             dispatch({ type: USER_LOGOUT })
             document.cookie = `TOKEN=`
             routerHistory.push("/")
-
         } catch (error) {
             console.log(error)
         }

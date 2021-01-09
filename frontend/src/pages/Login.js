@@ -56,7 +56,7 @@ export default function Login() {
                 </div>
 
                 <div className="w-100 d-flex justify-content-center m-y-30">
-                    <button disabled={isLoading} className="col-12 col-md-4 btn p-10 radius-4 btn-success" onClick={validateData}>
+                    <button disabled={isLoading} className="col-12 col-md-4 btn p-10 radius-4 btn-main" onClick={validateData}>
                         <span>Login</span>
                     </button>
                 </div>
