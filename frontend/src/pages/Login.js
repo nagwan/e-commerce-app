@@ -12,7 +12,6 @@ export default function Login() {
     const error = useSelector(state => state.user.error)
     const [credentialsError, setCredentialsError] = useState(error)
 
-
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -39,9 +38,7 @@ export default function Login() {
         }
     }
 
-
     return (
-
         <div className="w-100 d-flex flex-wrap justify-content-center">
             <div className="col-12 col-md-6 col-lg-4 col-xl-3 bg-white p-30 m-y-50 radius-4 shadow-4">
                 <div className="w-100 m-y-10">
@@ -65,7 +62,6 @@ export default function Login() {
                 </div>
             </div>
         </div>
-
     )
 }
 

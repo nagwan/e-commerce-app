@@ -94,10 +94,10 @@ export function userProfile() {
         try {
             dispatch({ type: USER_PROFILE_REQUEST })
 
-            const user = await api("api/users/profile", {}, "get", token).then(({ data }) => {
+            const user = await api("api/users/profile", {}, "get", {}, token).then(({ data }) => {
                 return data
             })
-
+            
             dispatch({ type: USER_PROFILE_SUCCESS, payload: { data: user } })
 
         } catch (error) {

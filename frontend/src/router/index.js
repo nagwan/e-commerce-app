@@ -8,7 +8,7 @@ import getCookie from '../utils/getCookie';
 import { userProfile } from '../store/user/actions';
 
 
-function CheckAuth({ route }) {    
+function CheckAuth( route ) {    
     const user = useSelector(state => state.user.user)
     const [isAuthorized, setIsAuthorized] = useState(user.id ? true : false)
     const dispatch = useDispatch()
@@ -22,7 +22,7 @@ function CheckAuth({ route }) {
         } else if (!token && !user.id) {
             setIsAuthorized(false)
         }
-    }, [user.id])
+    }, [user, dispatch])
 
     return (
 
@@ -47,6 +47,7 @@ function PrivateRoutes({ route, isAuthorized}) {
 }
 
 function AuthRoutes({ route, isAuthorized }) {
+    
     return (
         /**
          * be sure that authenticated users do not pass these routes,
@@ -55,7 +56,7 @@ function AuthRoutes({ route, isAuthorized }) {
 
         !isAuthorized ? <Route path={route.path} exact={route.exact} component={route.component} />
             :
-            <Redirect push to='/me' />
+            <Redirect push to='/me'/>
     )
 }
 
@@ -70,7 +71,7 @@ function ManiRouter() {
                     <Switch>
                         {
                             Routes.map((route, index) => (
-                                (route.private || route.auth) ? <CheckAuth key={index} route={route} /> : 
+                                route.private || route.auth ? <CheckAuth key={index} {...route}  /> : 
                                 <Route key={index} path={route.path} exact={route.exact} component={route.component} />
                             ))
                         }
@@ -84,7 +85,4 @@ function ManiRouter() {
 }
 
 
-function isAuthorized(user, token) {
-
-}
 export default ManiRouter

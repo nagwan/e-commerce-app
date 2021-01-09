@@ -10,7 +10,7 @@ export const api = (url, data, method, params, token) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': token ? 'Bearer' + token : ''
+            'Authorization': token ? 'Bearer ' + token : ''
         }
     })
 
