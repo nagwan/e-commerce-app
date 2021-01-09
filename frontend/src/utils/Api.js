@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const api = (url, data, method, params) => {
+export const api = (url, data, method, params, token) => {
 
     const request = axios({
         method,
@@ -10,6 +10,7 @@ export const api = (url, data, method, params) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': token ? 'Bearer' + token : ''
         }
     })
 
