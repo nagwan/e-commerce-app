@@ -127,3 +127,40 @@ export function userProfile() {
     }
 }
 
+
+/**
+ * user profile update actions types
+ */
+export const USER_UPDATE_PROFILE_REQUEST = "USER_UPDATE_PROFILE_REQUEST"
+export const USER_UPDATE_PROFILE_SUCCESS = "USER_UPDATE_PROFILE_SUCCESS"
+export const USER_UPDATE_PROFILE_FAIL = "USER_UPDATE_PROFILE_FAIL"
+
+
+/**
+ * user profile update actions creators
+ */
+
+export function userProfileUpdate(data) {
+
+
+    return async function (dispatch) {
+
+        let token = getCookie("TOKEN")
+
+        try {
+            dispatch({ type: USER_UPDATE_PROFILE_REQUEST })
+
+            const user = await api("api/users/profile", data, "put", {}, token).then(({ data }) => {
+                return data
+            })
+
+            dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: { data: user } })
+
+        } catch (error) {
+            dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: { error: error.response?.data.message || error.message } })
+
+        }
+
+    }
+}
+
