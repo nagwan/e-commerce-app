@@ -22,8 +22,6 @@ const trimEndWhitespace = (val) => {
     return val;
 }
 
-
-
 export {
     isEmailValid,
     isStringValid

@@ -58,9 +58,9 @@ const registerUser = asyncHandler(async (req, res) => {
                 res.status(400)
                 throw new Error("invalid user data")
             }
-        }else {
+        } else {
             res.status(400)
-            throw new Error("invalid user data") 
+            throw new Error("invalid user data")
         }
     }
 
@@ -84,13 +84,45 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 })
 
-const createUser = (data) => {
 
-}
+const updateUserProfile = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id)
+
+    if (user) {
+
+        const emailValid = isEmailValid(req.body.email || "")
+        const nameValid = isStringValid(req.body.name || "", 2, 15)
+
+        if (req.body.password &&  isStringValid(password || "", 5, 15)) {
+            user.password = req.body.password
+        }
+
+        if (emailValid && nameValid) {
+            user.name = req.body.name
+            user.email = req.body.email
+        }
+
+        const updatedUser = await user.save()
+
+        res.json({
+            id: updatedUser._id,
+            email: updatedUser.email,
+            name: updatedUser.name,
+            isAdmin: updatedUser.isAdmin,
+        })
+    } else {
+        res.status(404)
+        throw new Error("User not found")
+    }
+
+})
+
+
 
 
 export {
     authUser,
     getUserProfile,
-    registerUser
+    registerUser,
+    updateUserProfile
 }

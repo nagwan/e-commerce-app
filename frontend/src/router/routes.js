@@ -1,8 +1,11 @@
 import Cart from "../pages/Cart";
 import Home from "../pages/Home";
+import Login from "../pages/Login";
 import Product from "../pages/Product";
+import Profile from "../pages/Profile";
+import Register from "../pages/Register";
 
-const Routes =  [
+const Routes = [
 
     {
         path: '/',
@@ -21,6 +24,27 @@ const Routes =  [
         exact: true,
         component: Cart,
         private: false
+    },
+    {
+        path: '/login',
+        exact: true,
+        component: Login,
+        private: false,
+        auth: true
+    },
+    {
+        path: '/register',
+        exact: true,
+        component: Register,
+        private: false,
+        auth: true
+    },
+    {
+        path: '/me',
+        exact: true,
+        component: Profile,
+        private: true,
+        auth: false
     },
 
 ]
